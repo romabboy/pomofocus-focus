@@ -44,7 +44,6 @@ export const PomoBoard: React.FC<PomoBoardProps> = () => {
     }
 
     const handlerNextButton = () => {
-        dispatch(pomoActions.resetTime())
         dispatch(pomoActions.next())
         const isIntervalCleared = clearInervalIfExist(intervalRef.current)
         if (isIntervalCleared) intervalRef.current = null
