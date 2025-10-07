@@ -1,5 +1,8 @@
 import { Layout } from '../components/layout';
-import React from 'react';
+import React, { useState } from 'react';
+import { PomoBoard } from '../components/home/PomoBoard';
+import { useAppSelector } from '../hooks/redux';
+import { selectColor } from '../store/store';
 
 
 interface HomePageProps{
@@ -7,9 +10,11 @@ interface HomePageProps{
 };
 
 export const HomePage: React.FC<HomePageProps> = ({ title }) => {
+    const bgColor = useAppSelector(selectColor)
+
     return (
-      <Layout>
-        <h1>{title}</h1>
+      <Layout bgColor={bgColor}>
+        <PomoBoard />
       </Layout>
     );
 };

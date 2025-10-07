@@ -4,7 +4,18 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor:{
+        customRed: '#ba4949',
+        customBlue: '#397097',
+        customGreen: '#38858a'
+      },
+      textColor: {
+        customRed: '#ba4949',
+        customBlue: '#397097',
+        customGreen: '#38858a'
+      }
+    },
   },
   plugins: [],
 }

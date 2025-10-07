@@ -1,21 +1,18 @@
+import clsx from 'clsx';
 import { WrapperContainer } from '../wrappers/WrapperContainer';
 import { Header } from './Header';
 
-enum BgColor {
-    RED = '#ba4949',
-    GREEN = '#38858a',
-    BLUE = '#397097',
-}
+
 
 interface LayoutProps {
     children: React.ReactNode,
-    bgColor?: BgColor
+    bgColor?: string
 }
 
 
-export const Layout: React.FC<LayoutProps> = ({ children, bgColor = BgColor.RED }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, bgColor }) => {
     return (
-        <div className={`bg-black`}>
+        <div className={clsx('transition-colors duration-200')} style={{backgroundColor: bgColor}}>
 
             <WrapperContainer>
                 <>

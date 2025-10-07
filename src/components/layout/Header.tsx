@@ -28,7 +28,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 {navItem.map(item => 
                 <Button 
                     icon={item.icon}
-                    key={item.title}
+                    key={item.icon}
                     title={item.title}
                     variant={ButtonVariants.NAV_HEADER}
                 />)}
