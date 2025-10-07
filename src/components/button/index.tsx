@@ -6,24 +6,33 @@ import { BUTTON_STYLE_VARIANTS } from './constants';
 interface ButtonProps {
     variant: ButtonVariants
     title?: string
+    titleColor?: string
     icon?: string
+    isActive?: boolean
+    className?: string
+    clickHandler?: () => void
 }
 
-export const Button: React.FC<ButtonProps> = ({ variant, title, icon }) => {
-
+export const Button: React.FC<ButtonProps> = ({ variant, title, titleColor, icon, isActive, className, clickHandler }) => {
     return (
         <button
+            onClick={ e => clickHandler && clickHandler()}
             className={clsx(
-                BUTTON_STYLE_VARIANTS[variant]
+                className,
+                'transition-all duration-200',
+                BUTTON_STYLE_VARIANTS[variant].base,
+                isActive && BUTTON_STYLE_VARIANTS[variant].active
             )}
         >
             {
-                variant == ButtonVariants.NAV_HEADER && icon
+                icon
                 && <img className='w-4 h-4' src={icon} alt={title} />
             }
             {
                 title &&
-                <div>{title}</div>
+                <div
+                    style={{color: titleColor}}
+                >{title}</div>
             }
         </button>
     )
