@@ -15,6 +15,7 @@ import {
     selectColorsMap
 
 } from "../../store/store";
+import { ProgressTimer } from "./ProgressTimer";
 
 interface PomoBoardProps {
 
@@ -55,44 +56,47 @@ export const PomoBoard: React.FC<PomoBoardProps> = () => {
         dispatch(siteColorActions.setColor(colorsMap[pomoId]))
         const isIntervalCleared = clearInervalIfExist(intervalRef.current)
         if (isIntervalCleared) intervalRef.current = null
-        
+
 
     }, [dispatch, pomoId])
 
     return (
-        <div className="max-w-[480px] mx-auto w-full pt-5 pb-8 flex flex-col items-center bg-white bg-opacity-10 rounded">
-            <nav>
-                {
-                    pomoOptions.map(option =>
-                        <Button
-                            key={option.id}
-                            title={option.title}
-                            variant={ButtonVariants.POMO_OPTION}
-                            isActive={pomoId == option.id}
-                            clickHandler={() => { dispatch(pomoActions.moveToId(option.id)) }}
-                        />
-                    )
-                }
-            </nav>
-            <Timer />
-            <div className="mt-10 relative w-full flex justify-center">
-                <Button
-                    title={isStart ? "PAUSE" : "START"}
-                    titleColor={siteColor}
-                    variant={ButtonVariants.START}
-                    isActive={isStart}
-                    clickHandler={() => handlerStartButton()}
-                    
-                />
-                <Button
-                    variant={ButtonVariants.NEXT}
-                    icon={nextButtonImg}
-                    className="absolute top-1/2 -translate-y-1/3 right-14 z-10 w-6 h-6"
-                    isActive={isStart}
-                    clickHandler={() => handlerNextButton()}
-                />
+        <>
+            <ProgressTimer className="mb-10" pomoId={pomoId} />
+            <div className="max-w-[480px] mx-auto w-full pt-5 pb-8 flex flex-col items-center bg-white bg-opacity-10 rounded">
+                <nav>
+                    {
+                        pomoOptions.map(option =>
+                            <Button
+                                key={option.id}
+                                title={option.title}
+                                variant={ButtonVariants.POMO_OPTION}
+                                isActive={pomoId == option.id}
+                                clickHandler={() => { dispatch(pomoActions.moveToId(option.id)) }}
+                            />
+                        )
+                    }
+                </nav>
+                <Timer />
+                <div className="mt-10 relative w-full flex justify-center">
+                    <Button
+                        title={isStart ? "PAUSE" : "START"}
+                        titleColor={siteColor}
+                        variant={ButtonVariants.START}
+                        isActive={isStart}
+                        clickHandler={() => handlerStartButton()}
+
+                    />
+                    <Button
+                        variant={ButtonVariants.NEXT}
+                        icon={nextButtonImg}
+                        className="absolute top-1/2 -translate-y-1/3 right-14 z-10 w-6 h-6"
+                        isActive={isStart}
+                        clickHandler={() => handlerNextButton()}
+                    />
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

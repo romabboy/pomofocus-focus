@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { pomoReducer, pomoActions } from "./pomoBoard/slice";
 import { siteColorReducer, siteColorActions } from './siteColor/slice'
-import { selectPomoId, selectPomoIsStart, selectPomoStep, selectPomoTime} from './pomoBoard/selectors'
+import { selectPomoId, selectPomoIsStart, selectPomoStep, selectPomoTime, selectPomoSettings} from './pomoBoard/selectors'
 import { selectColor, selectColorsMap } from './siteColor/selectors'
 import { PomoIds } from "./types";
 
@@ -25,5 +25,6 @@ export {
     selectPomoStep,
     selectPomoTime,
     selectColor,
-    selectColorsMap
+    selectColorsMap,
+    selectPomoSettings
 }

@@ -22,3 +22,8 @@ export const selectPomoId = createSelector(
     selectPomoState,
     (state) => state.id
 )
+
+export const selectPomoSettings = createSelector(
+    selectPomoState,
+    (state) => state.settings
+)
