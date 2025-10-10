@@ -83,6 +83,12 @@ export const pomoSlice = createSlice({
             state.isStart = false
             state = NextStepHandler(state)
             return state
+        },
+        setInitialTime(state, action: PayloadAction<{pomoId: PomoIds, time: number}>){
+            state.settings.initialTimes[action.payload.pomoId] = action.payload.time
+        },
+        setInitialStep(state, action: PayloadAction<number>){
+            state.settings.initialStep = action.payload
         }
     }
 })
